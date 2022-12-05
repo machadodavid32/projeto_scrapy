@@ -14,5 +14,12 @@ class QuotesToScrapeSpider(scrapy.Spider):  # scrapy.spider para aproveitar as f
     # Response
     def parse(self, response):
         # Aqui é onde vc deve processar o que é retornada da response
-        with open('pagina.html', 'wb') as arquivo:
-            arquivo.write(response.body)
+        #with open('pagina.html', 'wb') as arquivo:  anulei essa e a linha abaixo para realizar o procedimento de varrer uma página
+         #   arquivo.write(response.body) 
+        for elemento in response.xpath("//div[@class='quote']"):
+            yield{
+                
+                'frase': elemento.xpath(".//span[@class='text']/text()").get(),  # para pegar o primeiro elemento. Reparar no ponto antes de //.
+                'autor': elemento.xpath(".//small[@class='author']/text()").get(),  # o ponto antes do // significa que queremos aquele conteúdo exato deste local do xptah
+                'tags': elemento.xpath(".//a[@class='tag']/text()").getall()  # Quero que pegue todas as tags do site
+            }

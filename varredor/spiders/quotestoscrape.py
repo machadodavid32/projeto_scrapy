@@ -1,4 +1,6 @@
 import scrapy
+from scrapy.loader import ItemLoader  # essa e as importações da linha de baixo foram feitas após concluir os dados do arquivos items.py
+from varredor.items import CitacaoItem
 
 class QuotesToScrapeSpider(scrapy.Spider):  # scrapy.spider para aproveitar as funcionalidades
     # identidade (nome do bot)

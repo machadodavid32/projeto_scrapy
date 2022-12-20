@@ -10,7 +10,7 @@ def tirar_espaco_branco(valor):
     return valor.strip()
 
 def processar_caracteres_especiais(valor):
-    return valor.replace(u"\u201c", '').replace(u"\201d", '').replace(u"\u2014", '-').replace(u"\u2019")
+    return valor.replace(u"\u201c", '').replace(u"\201d", '').replace(u"\u2014", '-').replace(u"\u2019", '')
 
 def letras_maiusculas(valor):
     return valor.upper()
@@ -28,7 +28,7 @@ class CitacaoItem(scrapy.Item):
     )
     
     tags = scrapy.Field(
-        output_processor=Join(';') # Aqui será usado para pegar as tags do site e separar somente via virgula
+        output_processor=Join(';'), # Aqui será usado para pegar as tags do site e separar somente via virgula
         
     )
     

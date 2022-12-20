@@ -21,7 +21,7 @@ class GoodReadsSpider(scrapy.Spider):  # scrapy.spider para aproveitar as funcio
                                 selector=elemento, response=response)
             loader.add_xpath('frase', ".//div[@class='quoteText']/text()")
             loader.add_xpath('autor', ".//span[@class='authorOrTitle']/text()")
-            loader.add_xpath('tags', "//div[@class='greyText smallText left']/text()")
+            loader.add_xpath('tags', ".//div[@class='greyText smallText left']/a/text()")
             yield loader.load_item()
             
             
